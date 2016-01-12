@@ -7,6 +7,7 @@
     <link href='../fullcalendar.css' rel='stylesheet' />
     <link href='../fullcalendar.print.css' rel='stylesheet' media='print' />
     <link href='material_calendar.css' rel='stylesheet' />
+    <link href='jquery-ui/jquery-ui.css' rel='stylesheet' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 
@@ -36,6 +37,9 @@
     <script src='../lib/jquery.min.js'></script>
     <script src='../fullcalendar.js'></script>
     <script src='../lang/es.js'></script>
+    <script src='jquery-ui/jquery-ui.js'></script>
+    <script src='context_menu/jquery.ui-contextmenu.js'></script>
+
     <script>
     $(document).ready(function() {
         $('#calendar').fullCalendar({
@@ -50,12 +54,22 @@
             maxTime: '20:00:00',
             defaultView: 'agendaWeek',
             eventRender: function(event, element) {
+                $(element).addClass('hasmenu');
                 if (event.new === true) {
                     console.log(event.source.events.length);
                     element.fadeIn(800);
                     event.new = false;
                 }
             },
+            /*dayClick: function(date, jsEvent, view) {
+
+                console.log('Clicked on: ' + date.format('YYYY-MM-DD'));
+
+                console.log(jsEvent);
+
+                console.log(view);
+
+            },*/
             events: [{
                     title: 'Business Lunch',
                     start: '2016-01-03T13:00:00',
@@ -101,6 +115,31 @@
         $('#today').click(function(event) {
             $('#calendar').fullCalendar('today');
             updateTitle();
+        });
+        $(document).contextmenu({
+            delegate: ".hasmenu",
+            preventContextMenuForPopup: true,
+            preventSelect: true,
+            menu: [{
+                title: "Cut",
+                cmd: "cut",
+                uiIcon: "ui-icon-scissors"
+            }, {
+                title: "Copy",
+                cmd: "copy",
+                uiIcon: "ui-icon-copy"
+            }, {
+                title: "Paste",
+                cmd: "paste",
+                uiIcon: "ui-icon-clipboard",
+                disabled: true
+            }, ],
+            select: function(event, ui) {
+                // Logic for handing the selected option
+            },
+            beforeOpen: function(event, ui) {
+                ui.menu.zIndex($(event.target).zIndex() + 1);
+            }
         });
 
         function updateTitle() { // Fix It!!

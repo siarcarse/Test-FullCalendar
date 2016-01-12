@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset='utf-8' />
+    <link href='js/bootstrap/css/bootstrap.css' rel='stylesheet' />
+    <link href='js/fullcalendar/fullcalendar.css' rel='stylesheet' />
+    <link href='js/fullcalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+    <link href='css/material_calendar.css' rel='stylesheet' />
+    <link href='js/jquery-ui/jquery-ui.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <div class="btn-group" role="group">
+                    <button id="prev" type="button" class="btn btn-success"><i class="fa fa-chevron-left"></i></button>
+                    <button id="next" type="button" class="btn btn-success"><i class="fa fa-chevron-right"></i></button>
+                </div>
+                &nbsp;
+                <button id="today" type="button" class="btn btn-primary">Hoy</button>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+                <h5 id="title"></h5>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-right">
+                <button id="today" type="button" class="btn btn-primary">Semana</button>
+                <button id="today" type="button" class="btn btn-primary text-center">&nbsp;&nbsp;&nbsp;&nbsp;Día&nbsp;&nbsp;&nbsp;&nbsp;</button>
+            </div>
+        </div>
+        <hr>
+        <div id='calendar'></div>
+    </div>
+    <script src='js/fullcalendar/lib/moment.min.js'></script>
+    <script src='js/fullcalendar/lib/jquery.min.js'></script>
+    <script src='js/fullcalendar/fullcalendar.js'></script>
+    <script src='js/fullcalendar/lang/es.js'></script>
+    <script src='js/jquery-ui/jquery-ui.js'></script>
+    <script src='js/context_menu/jquery.ui-contextmenu.js'></script>
+    <script src='js/ready.js'></script>
+    <script src='js/handler.js'></script>
+</body>
+
+</html>
